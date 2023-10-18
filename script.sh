@@ -88,7 +88,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
             $GEM5_BINARY -d "$OUTPUT_SUBDIR" $GEM5_CONFIG_SCRIPT \
                 --cpu-type="$cpu_model" \
                 --cpu-clock="$cpu_clock" \
-                --mem-type="$memory_config" \
+                --mem-    type="$memory_config" \
                 --caches --l2cache \
                 --l1d_size=32kB   \
                 --l1i_size=32kB   \
