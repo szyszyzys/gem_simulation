@@ -93,7 +93,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
                 --l1d_size=32kB   \
                 --l1i_size=32kB   \
                 --l2_size=256kB   \
-                --prefetcher=stream \
+                --prefetcher-type =stream \
                 --cmd=./a.out
             echo "Experiment completed: $cpu_model, $cpu_clock Hz, $memory_config"
         done
