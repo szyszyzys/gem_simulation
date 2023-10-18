@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#ifdef FRMWRK
+#include "gem5/m5ops.h"
+#endif
 #define  nil		0
 #define	 false		0
 #define  true		1
