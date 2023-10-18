@@ -93,6 +93,9 @@ for cpu_model in "${CPU_MODELS[@]}"; do
                 --l1d_size=32kB   \
                 --l1i_size=32kB   \
                 --l2_size=256kB   \
+                --l1i-hwp-type StridePrefetcher  \
+                --l1d-hwp-type StridePrefetcher   \
+                --l2d-hwp-type StridePrefetcher   \
                 --cmd=./a.out
 
             echo "Experiment completed: $cpu_model, $cpu_clock Hz, $memory_config"
