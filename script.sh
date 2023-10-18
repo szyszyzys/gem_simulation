@@ -6,7 +6,7 @@ GEM5_BINARY="/home/other/CSE530-FA2022/gem5/build/X86/gem5.opt"
 # Set the path to the GEM5 configuration script
 GEM5_CONFIG_SCRIPT="/home/other/CSE530-FA2022/gem5/configs/example/se.py"
 
-BINARY_PATH="./quicksort.out"
+BINARY_PATH="./a.out"
 # Set the output directory where results will be saved
 OUTPUT_DIR="experiment_results"
 
