@@ -29,6 +29,7 @@ with open(stats_file_path, "r") as stats_file:
             match = re.match(regex, line)
             if match:
                 statistics[key] = float(match.group(1))
+print(statistics)
 
 # Calculate CPU utilization
 sim_seconds = statistics["sim_seconds"]
