@@ -67,7 +67,7 @@ mkdir -p "$OUTPUT_DIR"
 CPU_MODELS=("X86TimingSimpleCPU" "X86MinorCPU")
 
 # CPU clock frequencies (in Hz)
-CPU_CLOCKS=("1000000000" "1500000000" "2000000000" "2500000000" "3000000000")
+CPU_CLOCKS=("1GHz" "1.5GHz" "2GHz" "2.5GHz" "3GHz")
 
 # Memory configurations to test
 MEMORY_CONFIGS=("DDR3_1600_8x8" "DDR3_2133_8x8" "LPDDR2_S4_1066_1x32")
@@ -90,7 +90,11 @@ for cpu_model in "${CPU_MODELS[@]}"; do
                 --cpu-clock="$cpu_clock" \
                 --mem-type="$memory_config" \
                 --caches --l2cache \
-               --cmd=./a.out
+                --l1d_size=32kB   \
+                --l1i_size=32kB   \
+                --l2_size=256kB   \
+                --prefetcher=stream \
+                --cmd=./a.out
             echo "Experiment completed: $cpu_model, $cpu_clock Hz, $memory_config"
         done
     done
