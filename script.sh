@@ -4,7 +4,7 @@
 GEM5_BINARY="/home/other/CSE530-FA2022/gem5/build/X86/gem5.opt"
 
 # Set the path to the GEM5 configuration script
-GEM5_CONFIG_SCRIPT="/home/other/CSE530-FA2022/gem5/configs/example/se.py"
+GEM5_CONFIG_SCRIPT="./a3.cfg.py"
 
 BINARY_PATH="./a.out"
 # Set the output directory where results will be saved
@@ -35,7 +35,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
             mkdir -p "$OUTPUT_SUBDIR"
 
             # Run GEM5 with the specified configuration
-            $GEM5_BINARY -d "$OUTPUT_SUBDIR" $GEM5_CONFIG_SCRIPT --cmd="$BINARY_PATH" --cpu-model="$cpu_model" --cpu-clock="$cpu_clock" --memory-config="$memory_config" --caches --l2cache
+            $GEM5_BINARY -d "$OUTPUT_SUBDIR" $GEM5_CONFIG_SCRIPT --cpu-model="$cpu_model" --cpu-clock="$cpu_clock" --memory-config="$memory_config" --caches --l2cache
 
             # Optionally, you can save any relevant observations or results here
             # For example, you can save simulation statistics or logs
