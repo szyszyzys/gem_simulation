@@ -35,7 +35,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
             mkdir -p "$OUTPUT_SUBDIR"
 
             # Run GEM5 with the specified configuration
-            $GEM5_BINARY -d "$OUTPUT_SUBDIR" $GEM5_CONFIG_SCRIPT --cpu-model="$cpu_model" --cpu-clock="$cpu_clock" --memory-config="$memory_config" --caches --l2cache
+            $GEM5_BINARY -d "$OUTPUT_SUBDIR" $GEM5_CONFIG_SCRIPT --cpu-model="$cpu_model" --cpu-clock="$cpu_clock" --memory-config="$memory_config"
 
             # Optionally, you can save any relevant observations or results here
             # For example, you can save simulation statistics or logs
