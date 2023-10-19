@@ -64,7 +64,7 @@ OUTPUT_DIR="experiment_results"
 mkdir -p "$OUTPUT_DIR"
 
 STATES_DIR="states"
-mkdir -p "STATES_DIR"
+mkdir -p "$STATES_DIR"
 
 # CPU models to test
 CPU_MODELS=("X86TimingSimpleCPU" "X86MinorCPU")
@@ -101,7 +101,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
                 --l2-hwp-type StridePrefetcher   \
                 --cmd=./a.out
 
-            cp "$OUTPUT_SUBDIR"/stats.txt "${STATES_DIR}/${cpu_model}_${cpu_clock}_${memory_config}.txt"
+            cp "${OUTPUT_SUBDIR}"/stats.txt "${STATES_DIR}/${cpu_model}_${cpu_clock}_${memory_config}.txt"
             echo "Experiment completed: $cpu_model, $cpu_clock, $memory_config"
         done
     done
