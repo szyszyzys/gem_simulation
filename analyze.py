@@ -3,7 +3,6 @@ import sys  # Import the sys module to access command-line arguments
 # Define regular expressions to match relevant statistics
 
 
-
 # Check if the user provided an argument (path to stats.txt)
 if len(sys.argv) != 2:
     print("Usage: python script.py <path_to_stats.txt>")
@@ -13,15 +12,16 @@ stats_file_path = sys.argv[1]  # Get the path to stats.txt from the command-line
 
 print(f'current file ')
 stat_regex = {
-    "sim_seconds": r"simSeconds",
-    "instruction_type": r"system.cpu.exec_context.thread_0.statExecutedInstType",
-    "l2_cache_miss_rate": r"system\.l2\.ReadMisses\s*:\s*(\d+)",
-    "memory_accesses": r"system\.mem_ctrl\.reads\s*:\s*(\d+)",
-    "energy": r"system.mem_ctrls.dram.rank0.totalEnergy"
+
+    "sim_seconds": r'^simiSecond.*',
+    "instruction_type": r"system\.cpu\.exec_context\.thread_0\.statExecutedInstType.*",
+    "miss_rate": r'system\.cpu\.dcache\.demandMissRate::total.*',
+    "memory_accesses": r'system\.mem_ctrl\.reads\s*:\s*(\d+)',
+    "energy": r"r'^(system\.mem_ctrls\.dram\.rank[01]\.totalEnergy).*"
 }
 
 # Initialize variables to store statistics
-statistics = {key: None for key in stat_regex.keys()}
+statistics = {key: [] for key in stat_regex.keys()}
 
 # Read and parse the stats.txt file
 with open(stats_file_path, "r") as stats_file:
@@ -29,7 +29,7 @@ with open(stats_file_path, "r") as stats_file:
         for key, regex in stat_regex.items():
             match = re.match(regex, line)
             if match:
-                statistics[key] = match.group(1)
+                statistics[key] = statistics[key].append(line.strip())
 
 # Calculate CPU utilization
 sim_seconds = statistics["sim_seconds"]

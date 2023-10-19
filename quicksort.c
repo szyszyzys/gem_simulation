@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+
 #ifdef FRMWRK
 #include "gem5/m5ops.h"
 #endif
@@ -167,18 +169,19 @@ void Quick (int run) {
 	  printf("%d\n", sortlist[run + 1]);
 }
 
-
 int main()
 {
-    int h;
+	int h;
 	for (h = 0; h < 100; h++) Quick(h);
-	int i;
+
 	#ifdef FRMWRK
     m5_reset_stats(0,0);
     #endif
+	int i;
 	for (i = 0; i < 100; i++) Quick(i);
-	#ifdef FRMWRK
+    #ifdef FRMWRK
     m5_dump_stats(0,0);
     #endif
+
 	return 0;
 }
