@@ -170,7 +170,8 @@ void Quick (int run) {
 
 int main()
 {
-	for (i = 0; i < 100; i++) Quick(i);
+    int h;
+	for (h = 0; h < 100; h++) Quick(h);
 	int i;
 	#ifdef FRMWRK
     m5_reset_stats(0,0);
