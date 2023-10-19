@@ -3,7 +3,7 @@ import sys  # Import the sys module to access command-line arguments
 
 # Define regular expressions to match relevant statistics
 stat_regex = {
-    "sim_seconds": r"system\.cpu\.numCycles\s*:\s*(\d+\.\d+)",
+    "sim_seconds": r"hostSeconds*:\s*(\d+\.\d+)",
     "sim_ops": r"system\.cpu\.com_insts\s*:\s*(\d+)",
     "l1i_cache_miss_rate": r"system\.cpu\.icache\.ReadMisses\s*:\s*(\d+)",
     "l1d_cache_miss_rate": r"system\.cpu\.dcache\.ReadMisses\s*:\s*(\d+)",

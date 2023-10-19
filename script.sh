@@ -79,7 +79,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
         # Loop over memory configurations
         for memory_config in "${MEMORY_CONFIGS[@]}"; do
             # Construct a unique directory name based on the configuration
-            OUTPUT_SUBDIR="${OUTPUT_DIR}/${cpu_model}_${cpu_clock}Hz_${memory_config}"
+            OUTPUT_SUBDIR="${OUTPUT_DIR}/${cpu_model}_${cpu_clock}_${memory_config}"
 
             # Create the output subdirectory
             mkdir -p "$OUTPUT_SUBDIR"
@@ -88,7 +88,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
             $GEM5_BINARY -d "$OUTPUT_SUBDIR" $GEM5_CONFIG_SCRIPT \
                 --cpu-type="$cpu_model" \
                 --cpu-clock="$cpu_clock" \
-                --mem-    type="$memory_config" \
+                --mem-type="$memory_config" \
                 --caches --l2cache \
                 --l1d_size=32kB   \
                 --l1i_size=32kB   \
@@ -98,7 +98,7 @@ for cpu_model in "${CPU_MODELS[@]}"; do
                 --l2-hwp-type StridePrefetcher   \
                 --cmd=./a.out
 
-            echo "Experiment completed: $cpu_model, $cpu_clock Hz, $memory_config"
+            echo "Experiment completed: $cpu_model, $cpu_clock, $memory_config"
         done
     done
 done
