@@ -13,13 +13,11 @@ stats_file_path = sys.argv[1]  # Get the path to stats.txt from the command-line
 
 print(f'current file ')
 stat_regex = {
-    "sim_seconds": r"hostSeconds*:\s*(\d+\.\d+)",
-    "sim_ops": r"system\.cpu\.com_insts\s*:\s*(\d+)",
-    "l1i_cache_miss_rate": r"system\.cpu\.icache\.ReadMisses\s*:\s*(\d+)",
-    "l1d_cache_miss_rate": r"system\.cpu\.dcache\.ReadMisses\s*:\s*(\d+)",
+    "sim_seconds": r"simSeconds",
+    "instruction_type": r"system.cpu.exec_context.thread_0.statExecutedInstType",
     "l2_cache_miss_rate": r"system\.l2\.ReadMisses\s*:\s*(\d+)",
     "memory_accesses": r"system\.mem_ctrl\.reads\s*:\s*(\d+)",
-    "energy": r"system\.cpu\.power\.pp\(.*?\)\s*:\s*(\d+\.\d+)"
+    "energy": r"system.mem_ctrls.dram.rank0.totalEnergy"
 }
 
 # Initialize variables to store statistics
@@ -31,7 +29,7 @@ with open(stats_file_path, "r") as stats_file:
         for key, regex in stat_regex.items():
             match = re.match(regex, line)
             if match:
-                statistics[key] = float(match.group(1))
+                statistics[key] = match.group(1)
 
 # Calculate CPU utilization
 sim_seconds = statistics["sim_seconds"]
