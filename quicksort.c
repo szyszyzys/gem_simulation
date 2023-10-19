@@ -34,7 +34,7 @@
 #define d 		     8
 
     /* Bubble, Quick */
-#define sortelements 150000
+#define sortelements 5000
 #define srtelements  500
 
     /* fft */
