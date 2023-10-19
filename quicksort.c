@@ -167,29 +167,10 @@ void Quick (int run) {
 	  printf("%d\n", sortlist[run + 1]);
 }
 
-#define L2_CACHE_SIZE_BYTES 256 * 1024 // 256KB
-
-// Define a data structure to simulate memory accesses
-struct CacheLine {
-    char data[64]; // Assuming a typical cache line size of 64 bytes
-};
-
-void WarmUpL2Cache() {
-    // Calculate the number of cache lines in the L2 cache
-    int numCacheLines = L2_CACHE_SIZE_BYTES / sizeof(struct CacheLine);
-
-    // Define an array of cache lines to simulate memory accesses
-    struct CacheLine cacheData[numCacheLines];
-
-    // Access the data in a way that simulates your application's memory access patterns
-    for (int i = 0; i < numCacheLines; i++) {
-        // Access each cache line to populate the L2 cache
-        cacheData[i].data[0] = 0; // Modify based on your data access patterns
-    }
-}
 
 int main()
-{   WarmUpL2Cache();
+{
+	for (i = 0; i < 100; i++) Quick(i);
 	int i;
 	#ifdef FRMWRK
     m5_reset_stats(0,0);
