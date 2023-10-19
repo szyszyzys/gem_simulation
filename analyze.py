@@ -1,7 +1,17 @@
 import re
 import sys  # Import the sys module to access command-line arguments
-
 # Define regular expressions to match relevant statistics
+
+
+
+# Check if the user provided an argument (path to stats.txt)
+if len(sys.argv) != 2:
+    print("Usage: python script.py <path_to_stats.txt>")
+    sys.exit(1)
+
+stats_file_path = sys.argv[1]  # Get the path to stats.txt from the command-line argument
+
+print(f'current file ')
 stat_regex = {
     "sim_seconds": r"hostSeconds*:\s*(\d+\.\d+)",
     "sim_ops": r"system\.cpu\.com_insts\s*:\s*(\d+)",
@@ -15,13 +25,6 @@ stat_regex = {
 # Initialize variables to store statistics
 statistics = {key: None for key in stat_regex.keys()}
 
-# Check if the user provided an argument (path to stats.txt)
-if len(sys.argv) != 2:
-    print("Usage: python script.py <path_to_stats.txt>")
-    sys.exit(1)
-
-stats_file_path = sys.argv[1]  # Get the path to stats.txt from the command-line argument
-
 # Read and parse the stats.txt file
 with open(stats_file_path, "r") as stats_file:
     for line in stats_file:
@@ -29,7 +32,6 @@ with open(stats_file_path, "r") as stats_file:
             match = re.match(regex, line)
             if match:
                 statistics[key] = float(match.group(1))
-print(statistics)
 
 # Calculate CPU utilization
 sim_seconds = statistics["sim_seconds"]

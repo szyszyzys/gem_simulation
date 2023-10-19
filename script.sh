@@ -58,12 +58,12 @@ GEM5_BINARY="/home/other/CSE530-FA2022/gem5/build/X86/gem5.opt"
 GEM5_CONFIG_SCRIPT="/home/other/CSE530-FA2022/gem5/configs/example/se.py"
 
 # Set the output directory where results will be saved
-OUTPUT_DIR="experiment_results"
+OUTPUT_DIR="experiment_results_150k"
 
 # Create the output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
 
-STATES_DIR="states"
+STATES_DIR="states_150k"
 mkdir -p "$STATES_DIR"
 
 # CPU models to test
