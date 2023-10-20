@@ -34,7 +34,7 @@
 #define d 		     8
 
     /* Bubble, Quick */
-#define sortelements 150000
+#define sortelements 250000
 #define srtelements  500
 
     /* fft */
@@ -172,12 +172,12 @@ void Quick (int run) {
 int main()
 {
 	int h;
-	for (h = 0; h < 5; h++) Quick(h);
+	for (h = 0; h < 3; h++) Quick(h);
 	#ifdef FRMWRK
     m5_reset_stats(0,0);
     #endif
 	int i;
-	for (i = 0; i < 30; i++) Quick(i);
+	for (i = 0; i < 5; i++) Quick(i);
     #ifdef FRMWRK
     m5_dump_stats(0,0);
     #endif

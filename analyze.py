@@ -17,7 +17,9 @@ stat_regex = {
     "instruction_type": r"system\.cpu\.exec_context\.thread_0\.statExecutedInstType::(IntAlu|IntMult|MemRead|MemWrite).*",
     "miss_rate": r'system\.cpu\.dcache\.demandMissRate::total.*',
     "memory_accesses": r'system\.cpu\.dcache\.overallAccesses::total.*',
-    "energy": r'^(system\.mem_ctrls\.dram\.rank[01]\.totalEnergy).*'
+    "energy": r'^(system\.mem_ctrls\.dram\.rank[01]\.totalEnergy).*',
+    "warmup_tick": r'system\.cpu\.dcache\.tags\.warmupTick.*',
+    "total_tick": r'simTicks.*'
 }
 
 # Initialize variables to store statistics
