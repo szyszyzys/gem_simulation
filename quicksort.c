@@ -177,7 +177,7 @@ int main()
     m5_reset_stats(0,0);
     #endif
 	int i;
-	for (i = 0; i < 5; i++) Quick(i);
+	for (i = 0; i < 30; i++) Quick(i);
     #ifdef FRMWRK
     m5_dump_stats(0,0);
     #endif
